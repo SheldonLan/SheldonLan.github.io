@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Свадебное приглашение</title>
-  <meta name="description" content="Элегантный сайт-приглашение на свадьбу с программой дня, историей пары и подтверждением присутствия." />
-  <meta property="og:title" content="Свадебное приглашение" />
+  <title>Свадьба Анатолия и Марго — 07.07.2027</title>
+  <meta name="description" content="Приглашение на свадьбу Анатолия и Марго. Программа дня, детали и форма подтверждения присутствия." />
+  <meta property="og:title" content="Свадьба Анатолия и Марго — 07.07.2027" />
   <meta property="og:description" content="Приглашение на свадьбу, программа дня, детали и форма ответа для гостей." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://api.fontshare.com" />
@@ -417,6 +417,55 @@
       padding: var(--space-8);
     }
 
+    .rsvp-iframe-wrap {
+      margin-top: var(--space-6);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    }
+
+    .rsvp-iframe-wrap iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      margin-top: var(--space-8);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .countdown-unit {
+      background: var(--color-surface-2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-4);
+      text-align: center;
+    }
+
+    .countdown-unit strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .countdown-unit span {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
     form {
       display: grid;
       gap: var(--space-5);
@@ -479,6 +528,7 @@
       .detail-narrow,
       .note-card { grid-column: auto; }
       .hero-card { min-height: auto; }
+      .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
@@ -490,6 +540,7 @@
       .hero-card, .card, .rsvp-card, .dress-card { padding: var(--space-6); }
       .timeline-item { gap: var(--space-3); }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -514,7 +565,7 @@
           <path d="M20 36C20 28.268 26.268 22 34 22C40.627 22 46 27.373 46 34C46 39.523 41.523 44 36 44H28C23.582 44 20 40.418 20 36Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M24 28C26.667 30.667 29.333 33.333 32 36C34.667 32.667 37.333 29.333 40 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>Анна & Михаил</span>
+        <span>Анатолий &amp; Марго</span>
       </a>
 
       <nav class="nav" aria-label="Основная навигация">
@@ -535,32 +586,42 @@
         <div class="reveal is-visible">
           <span class="eyebrow">Приглашение на свадьбу</span>
           <h1>Мы женимся и будем счастливы разделить этот день с вами</h1>
-          <p class="hero-lead">Приглашаем вас на наш свадебный день — камерный, тёплый и очень личный. На сайте собраны главные детали: дата, место, программа, дресс-код и форма подтверждения присутствия.</p>
+          <p class="hero-lead">Приглашаем вас на наш свадебный день — камерный, тёплый и очень личный. На сайте собраны главные детали: ориентировочная дата, программа, дресс-код и форма подтверждения присутствия.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#rsvp">Подтвердить участие</a>
             <a class="btn btn-secondary" href="#day">Смотреть программу</a>
+          </div>
+
+          <div class="countdown-wrap reveal">
+            <small class="label">До свадьбы осталось (ориентировочно)</small>
+            <div class="countdown" id="countdown">
+              <div class="countdown-unit"><strong id="cd-days">—</strong><span>дней</span></div>
+              <div class="countdown-unit"><strong id="cd-hours">—</strong><span>часов</span></div>
+              <div class="countdown-unit"><strong id="cd-minutes">—</strong><span>минут</span></div>
+              <div class="countdown-unit"><strong id="cd-seconds">—</strong><span>секунд</span></div>
+            </div>
           </div>
         </div>
 
         <aside class="hero-card reveal is-visible" aria-label="Ключевая информация о свадьбе">
           <div class="hero-date">
             <span class="label">Сохраняйте дату</span>
-            <strong>24 · 07</strong>
-            <p>Суббота, 2027</p>
+            <strong>07 · 07</strong>
+            <p>Суббота, 2027 <em style="font-size:var(--text-xs); color:var(--color-text-faint);">(ориентировочно)</em></p>
           </div>
 
           <div class="meta-list">
             <div class="meta-item">
               <small>Церемония</small>
-              <p>17:00 — загородная усадьба «Белый сад»</p>
+              <p>Время и место будут уточнены ближе к дате</p>
             </div>
             <div class="meta-item">
               <small>Банкет</small>
-              <p>18:00 — летняя веранда и вечерний ужин</p>
+              <p>Детали по локации появятся позднее</p>
             </div>
             <div class="meta-item">
               <small>Финал вечера</small>
-              <p>22:30 — торт, свечи и танцы до ночи</p>
+              <p>Торт, свечи и танцы — обязательно будут</p>
             </div>
           </div>
         </aside>
@@ -572,7 +633,7 @@
         <div class="section-top reveal">
           <span class="section-kicker">Наша история</span>
           <h2>Всё началось с разговора, который затянулся на годы</h2>
-          <p>Этот блок можно легко заменить на вашу настоящую историю знакомства: как встретились, что оказалось важным, почему именно этот день хочется разделить с близкими людьми. Сейчас здесь стоит красивый демонстрационный текст, чтобы вы увидели структуру и настроение сайта.</p>
+          <p>Анатолий и Марго — и мы хотим, чтобы свадьба стала настоящей встречей людей, которые нам дороги. Этот сайт сделан как личное приглашение: без лишнего шума, но с вниманием к деталям и удобству гостей.</p>
         </div>
 
         <div class="story-grid">
@@ -580,7 +641,7 @@
             <span class="section-kicker">О нас</span>
             <p>Мы хотим, чтобы свадьба была не просто событием, а встречей людей, которые действительно важны. Поэтому этот сайт сделан как личное приглашение: без лишнего шума, но с вниманием к деталям, атмосфере и удобству гостей.</p>
             <div class="accent-line"></div>
-            <p>Здесь можно кратко рассказать, почему выбрано именно это место, какой будет характер праздника, хотите ли вы сделать акцент на церемонии, семейном ужине, живой музыке или танцах. Такой текст сразу задаёт правильное ожидание и помогает гостям почувствовать стиль будущего дня.</p>
+            <p>Праздник будет тёплым и камерным. Нам важна живая атмосфера, искренние разговоры и общие воспоминания — именно такой день мы хотим провести вместе с вами.</p>
             <div class="stats">
               <div class="stat">
                 <strong>1</strong>
@@ -599,9 +660,9 @@
 
           <aside class="card story-side reveal">
             <span class="section-kicker">Формат</span>
-            <p>Такой сайт хорошо работает как цифровая визитка-приглашение: его удобно открыть с телефона, переслать родственникам и дополнить точной информацией ближе к дате.</p>
+            <p>Камерный праздник с близкими людьми. Никакой спешки — только тёплые разговоры, хороший ужин и вечер, который хочется растянуть как можно дольше.</p>
             <div class="accent-line"></div>
-            <p>Можно добавить карту, таймер обратного отсчёта, список пожеланий по подаркам, фото пары, музыкальный плейлист и даже закрытый раздел с логистикой для гостей из другого города.</p>
+            <p>Точные детали по локации, тайминг и информацию по трансферу мы добавим на сайт ближе к дате. Следите за обновлениями!</p>
           </aside>
         </div>
       </div>
@@ -612,33 +673,33 @@
         <div class="section-top reveal">
           <span class="section-kicker">День свадьбы</span>
           <h2>Программа, чтобы гостям было спокойно и понятно</h2>
-          <p>Для свадебного сайта особенно полезен короткий, визуально чистый таймлайн. Он снимает лишние вопросы: когда приезжать, сколько длится церемония, когда начнётся ужин и во сколько планировать обратную дорогу.</p>
+          <p>Точное время будет уточнено позднее. Ниже — ориентировочный план дня, чтобы вы могли заранее представить, как пройдёт наш праздник.</p>
         </div>
 
         <div class="timeline">
           <article class="timeline-item reveal">
-            <time datetime="2027-07-24T16:30">16:30</time>
+            <time datetime="2027-07-07T16:30">~16:30</time>
             <div>
               <h3>Сбор гостей</h3>
               <p>Лёгкий welcome, музыка, напитки и время обняться до начала официальной части.</p>
             </div>
           </article>
           <article class="timeline-item reveal">
-            <time datetime="2027-07-24T17:00">17:00</time>
+            <time datetime="2027-07-07T17:00">~17:00</time>
             <div>
               <h3>Церемония</h3>
               <p>Основной момент дня — коротко, красиво и по-настоящему лично.</p>
             </div>
           </article>
           <article class="timeline-item reveal">
-            <time datetime="2027-07-24T18:00">18:00</time>
+            <time datetime="2027-07-07T18:00">~18:00</time>
             <div>
               <h3>Ужин и поздравления</h3>
               <p>Тёплый вечер с близкими, тостами, ужином и живым общением без спешки.</p>
             </div>
           </article>
           <article class="timeline-item reveal">
-            <time datetime="2027-07-24T20:30">20:30</time>
+            <time datetime="2027-07-07T20:30">~20:30</time>
             <div>
               <h3>Танцы и вечерняя программа</h3>
               <p>Музыка, танцы, фотографии на закате и более свободная часть праздника.</p>
@@ -653,25 +714,27 @@
         <div class="section-top reveal">
           <span class="section-kicker">Детали</span>
           <h2>Всё, что обычно спрашивают гости</h2>
-          <p>Этот блок полезно сделать максимально прикладным. Чем точнее будет информация, тем меньше организационной нагрузки в последние недели перед свадьбой.</p>
+          <p>Информацию по локации и логистике мы добавим ближе к дате свадьбы. Уже сейчас можно ознакомиться с дресс-кодом и пожеланиями по организационным моментам.</p>
         </div>
 
         <div class="details-grid">
           <article class="card detail-wide reveal">
             <span class="section-kicker">Локация и логистика</span>
-            <p>Здесь можно разместить полный адрес площадки, схему проезда, координаты для навигатора и подсказку по парковке. Если часть гостей приедет из другого города, стоит добавить ближайшие отели, трансфер или время общего выезда.</p>
+            <p>Адрес площадки, схема проезда и координаты для навигатора будут опубликованы ближе к дате свадьбы. Если вы приедете из другого города — мы позаботимся о трансфере и подскажем удобные варианты размещения.</p>
             <div class="accent-line"></div>
-            <p>При желании сюда можно встроить карту, блок с контактами координатора или отдельный абзац о том, кому звонить в день свадьбы по организационным вопросам.</p>
+            <p>Следите за обновлениями сайта — вся необходимая информация появится здесь заблаговременно. По срочным вопросам вы всегда можете написать нам напрямую.</p>
           </article>
 
           <aside class="dress-card detail-narrow reveal">
             <span class="section-kicker">Дресс-код</span>
-            <p>Самый удобный вариант — короткое описание атмосферы и палитры, без жёсткого давления на гостей. Например: «просим выбрать спокойные природные оттенки и избегать чисто белого».</p>
-            <div class="palette" aria-label="Пример палитры дресс-кода">
-              <span class="swatch" style="background:#d8c2b0"></span>
-              <span class="swatch" style="background:#b88f7a"></span>
-              <span class="swatch" style="background:#8c5a4b"></span>
-              <span class="swatch" style="background:#6a7b67"></span>
+            <p>Дресс-код свободный, строгих правил нет. При желании — отдайте предпочтение <strong>официально-деловому стилю</strong>: это создаст красивую общую атмосферу на фото и на вечере.</p>
+            <p style="margin-top: var(--space-4);">Приветствуются нейтральные и приглушённые оттенки — примеры в палитре ниже. Просим воздержаться от чисто белого цвета.</p>
+            <div class="palette" aria-label="Рекомендуемая палитра дресс-кода">
+              <!-- Нейтральные деловые оттенки: светло-бежевый, серо-голубой, антрацит, тёмно-синий -->
+              <span class="swatch" style="background:#e8e0d5" title="Светлый беж"></span>
+              <span class="swatch" style="background:#9eaab8" title="Серо-голубой"></span>
+              <span class="swatch" style="background:#4a4a4a" title="Антрацит"></span>
+              <span class="swatch" style="background:#2c3e5a" title="Тёмно-синий"></span>
             </div>
           </aside>
         </div>
@@ -679,15 +742,15 @@
         <div class="notes-grid" style="margin-top: var(--space-6);">
           <article class="note-card reveal">
             <span class="section-kicker">Дети</span>
-            <p>Можно деликатно указать формат вечера: только для взрослых или семейное мероприятие.</p>
+            <p>Формат вечера преимущественно для взрослых — уточните пожалуйста заранее, если планируете прийти с детьми, мы постараемся всё организовать.</p>
           </article>
           <article class="note-card reveal">
             <span class="section-kicker">Подарки</span>
-            <p>Удобно заранее написать, что для вас действительно уместно: впечатления, вклад в путешествие или просто ваше присутствие.</p>
+            <p>Самый ценный подарок — ваше присутствие. Если хочется порадовать нас чем-то материальным, предпочтём совместный вклад в путешествие или приятный сюрприз по вашему выбору.</p>
           </article>
           <article class="note-card reveal">
             <span class="section-kicker">Цветы</span>
-            <p>Здесь можно оставить альтернативу букетам: книга с пожеланием, благотворительное пожертвование или бутылка вина для семейной коллекции.</p>
+            <p>Вместо букетов будем рады открытке с пожеланием или бутылке хорошего вина для семейной коллекции.</p>
           </article>
         </div>
       </div>
@@ -697,41 +760,33 @@
       <div class="container rsvp-layout">
         <div class="rsvp-card reveal">
           <span class="section-kicker">Ответ гостя</span>
-          <h2>Подтвердите участие до 1 июня</h2>
-          <p>Сейчас форма работает как визуальный макет. На следующем шаге можно подключить отправку в Telegram, Google Sheets, почту, Formspree, Supabase или любой другой удобный вам способ сбора ответов.</p>
+          <h2>Подтвердите участие</h2>
+          <p>Пожалуйста, заполните короткую форму — это поможет нам подготовиться и сделать праздник максимально удобным для каждого гостя.</p>
 
-          <form>
-            <div class="field">
-              <label for="name">Ваше имя и фамилия</label>
-              <input id="name" name="name" type="text" placeholder="Например, Елена Иванова" />
-            </div>
-            <div class="field">
-              <label for="attendance">Сможете ли вы присутствовать?</label>
-              <select id="attendance" name="attendance">
-                <option>Да, с радостью буду</option>
-                <option>Пока не уверен(а)</option>
-                <option>К сожалению, не смогу</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="comment">Комментарий</label>
-              <textarea id="comment" name="comment" placeholder="Например, сообщите о пищевых ограничениях или вопросах по трансферу"></textarea>
-            </div>
-            <button class="btn btn-primary" type="button">Отправить ответ</button>
-          </form>
+          <div class="rsvp-iframe-wrap">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfZtTiVXJ8lpYHbRQYfYlJXhEzCGEJ5aIKCrFVZ1CL5UqkGrg/viewform?embedded=true"
+              width="640"
+              height="780"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Форма подтверждения участия"
+              loading="lazy"
+            >Загрузка…</iframe>
+          </div>
         </div>
 
         <aside class="dress-card reveal">
-          <span class="section-kicker">Что можно добавить дальше</span>
-          <p>После утверждения визуального стиля имеет смысл перейти от макета к реальному свадебному сайту с вашими данными.</p>
+          <span class="section-kicker">Что будет дальше</span>
+          <p>Все ответы мы видим сразу — ничего не потеряется. Ближе к дате свадьбы мы свяжемся с каждым гостем лично и уточним все детали.</p>
           <div class="accent-line"></div>
-          <p>Наиболее полезные доработки:</p>
+          <p>На этот сайт мы будем добавлять новую информацию по мере подготовки:</p>
           <ul style="margin-top: var(--space-4); display: grid; gap: var(--space-3); color: var(--color-text-muted); padding-left: 1.2rem;">
-            <li>Подстановка ваших имён, даты, адреса и тайминга.</li>
-            <li>Фото пары в hero-блоке и в секции истории.</li>
-            <li>Настоящая форма RSVP с записью ответов.</li>
-            <li>Таймер обратного отсчёта до свадьбы.</li>
-            <li>Карта площадки и контакты координатора.</li>
+            <li>Точный адрес и схема проезда до площадки.</li>
+            <li>Финальное время церемонии и банкета.</li>
+            <li>Информация по трансферу и парковке.</li>
+            <li>Контакты координатора в день свадьбы.</li>
           </ul>
         </aside>
       </div>
@@ -740,7 +795,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>Сделано как персональное цифровое приглашение — красиво, спокойно и удобно для гостей.</p>
+      <p>Анатолий &amp; Марго — 07.07.2027 &nbsp;·&nbsp; Сделано с любовью как персональное цифровое приглашение.</p>
       <a href="#hero">Наверх ↑</a>
     </div>
   </footer>
@@ -779,6 +834,34 @@
       document.querySelectorAll('.reveal').forEach(function(el, index) {
         if (index > 1) observer.observe(el);
       });
+
+      // Countdown timer to 07.07.2027 00:00:00 (Novosibirsk, UTC+7)
+      var target = new Date('2027-07-07T00:00:00+07:00');
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        var now = new Date();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent = '0';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-minutes').textContent = '00';
+          document.getElementById('cd-seconds').textContent = '00';
+          return;
+        }
+        var days    = Math.floor(diff / 86400000);
+        var hours   = Math.floor((diff % 86400000) / 3600000);
+        var minutes = Math.floor((diff % 3600000) / 60000);
+        var seconds = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent    = days;
+        document.getElementById('cd-hours').textContent   = pad(hours);
+        document.getElementById('cd-minutes').textContent = pad(minutes);
+        document.getElementById('cd-seconds').textContent = pad(seconds);
+      }
+
+      tick();
+      setInterval(tick, 1000);
     }());
   </script>
 </body>
