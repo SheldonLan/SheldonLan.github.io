@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Свадебное приглашение</title>
+  <meta name="description" content="Элегантный сайт-приглашение на свадьбу с программой дня, историей пары и подтверждением присутствия." />
+  <meta property="og:title" content="Свадебное приглашение" />
+  <meta property="og:description" content="Приглашение на свадьбу, программа дня, детали и форма ответа для гостей." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=boska@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2.4rem, 1.4rem + 3vw, 4.8rem);
+      --text-hero: clamp(3.2rem, 1.4rem + 7vw, 7rem);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+      --color-bg: #fbf7f3;
+      --color-surface: #fffdf9;
+      --color-surface-2: #f6efe8;
+      --color-surface-offset: #efe4d9;
+      --color-border: #dbcdbf;
+      --color-divider: #e7dbcf;
+      --color-text: #2f241f;
+      --color-text-muted: #7f6b61;
+      --color-text-faint: #b69d92;
+      --color-text-inverse: #fffaf5;
+      --color-primary: #8c5a4b;
+      --color-primary-hover: #72473b;
+      --color-primary-active: #5b372e;
+      --color-primary-highlight: #ead7cf;
+      --color-success: #5f7d53;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --radius-xl: 2rem;
+      --radius-full: 9999px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 2px rgba(47, 36, 31, 0.06);
+      --shadow-md: 0 10px 30px rgba(47, 36, 31, 0.09);
+      --shadow-lg: 0 20px 60px rgba(47, 36, 31, 0.13);
+      --content-default: 1120px;
+      --font-display: 'Boska', Georgia, serif;
+      --font-body: 'General Sans', Inter, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #1d1715;
+      --color-surface: #241d1a;
+      --color-surface-2: #2c2420;
+      --color-surface-offset: #342b26;
+      --color-border: #4a3f39;
+      --color-divider: #3e342f;
+      --color-text: #f2e7de;
+      --color-text-muted: #d0b9aa;
+      --color-text-faint: #8f7a70;
+      --color-text-inverse: #1d1715;
+      --color-primary: #d4a08f;
+      --color-primary-hover: #e1b3a4;
+      --color-primary-active: #efc6b8;
+      --color-primary-highlight: #43332e;
+      --color-success: #9fbe92;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.3);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.38);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(140, 90, 75, 0.08), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(212, 160, 143, 0.18), transparent 20%),
+        var(--color-bg);
+      color: var(--color-text);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: -40px;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-full);
+      z-index: 100;
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      color: var(--color-primary);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      display: inline-grid;
+      place-items: center;
+      background: var(--color-surface);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    main { overflow: clip; }
+
+    .hero {
+      padding-block: clamp(var(--space-16), 13vw, var(--space-32));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-8);
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-6);
+    }
+
+    h1, h2 { font-family: var(--font-display); font-weight: 500; line-height: 0.98; }
+    h1 { font-size: var(--text-hero); max-width: 9ch; }
+    h2 { font-size: var(--text-2xl); margin-bottom: var(--space-5); }
+
+    .hero-lead {
+      margin-top: var(--space-6);
+      max-width: 58ch;
+      color: var(--color-text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      transition: transform var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary {
+      background: var(--color-surface);
+      border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+      color: var(--color-text);
+    }
+
+    .hero-card,
+    .card,
+    .timeline-item,
+    .rsvp-card,
+    .dress-card,
+    .note-card {
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-card {
+      padding: var(--space-8);
+      position: relative;
+      isolation: isolate;
+      min-height: 520px;
+      display: grid;
+      align-content: space-between;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 74%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent)),
+        var(--color-surface);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+      border-radius: calc(var(--radius-xl) - 18px);
+      pointer-events: none;
+    }
+
+    .hero-date {
+      display: grid;
+      gap: var(--space-2);
+      text-align: center;
+      align-self: center;
+    }
+
+    .hero-date strong {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 2rem + 3vw, 5rem);
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    .meta-list {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .meta-item small,
+    .section-kicker,
+    .timeline-item time,
+    .label {
+      display: block;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-2);
+    }
+
+    section {
+      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
+    }
+
+    .section-top {
+      display: grid;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      max-width: 62ch;
+    }
+
+    .section-top p { color: var(--color-text-muted); }
+
+    .story-grid,
+    .details-grid,
+    .notes-grid {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card {
+      padding: var(--space-8);
+      min-height: 100%;
+    }
+
+    .story-main { grid-column: span 7; }
+    .story-side { grid-column: span 5; }
+    .detail-wide { grid-column: span 7; }
+    .detail-narrow { grid-column: span 5; }
+    .note-card { grid-column: span 4; padding: var(--space-6); }
+
+    .accent-line {
+      width: 72px;
+      height: 1px;
+      background: var(--color-primary);
+      margin-block: var(--space-5);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    .stat {
+      padding: var(--space-5);
+      background: var(--color-surface-2);
+      border-radius: var(--radius-lg);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .timeline {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .timeline-item {
+      padding: var(--space-6);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .timeline-item p,
+    .card p,
+    .note-card p,
+    .rsvp-card p,
+    .dress-card p { color: var(--color-text-muted); }
+
+    .palette {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-5);
+    }
+
+    .swatch {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      border: 4px solid color-mix(in srgb, var(--color-surface) 80%, transparent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rsvp-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .rsvp-card,
+    .dress-card {
+      padding: var(--space-8);
+    }
+
+    form {
+      display: grid;
+      gap: var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .field {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      min-height: 48px;
+      padding: var(--space-4) var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+      background: var(--color-surface-2);
+    }
+
+    textarea { min-height: 132px; resize: vertical; }
+
+    .footer {
+      padding-block: var(--space-10) var(--space-16);
+      color: var(--color-text-muted);
+    }
+
+    .footer-inner {
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-divider);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .rsvp-layout,
+      .timeline-item,
+      .story-grid,
+      .details-grid,
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
+      .story-main,
+      .story-side,
+      .detail-wide,
+      .detail-narrow,
+      .note-card { grid-column: auto; }
+      .hero-card { min-height: auto; }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner { align-items: flex-start; padding-block: var(--space-4); }
+      .nav { gap: var(--space-3); }
+      h1 { max-width: 100%; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .stats { grid-template-columns: 1fr; }
+      .hero-card, .card, .rsvp-card, .dress-card { padding: var(--space-6); }
+      .timeline-item { gap: var(--space-3); }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="На главную">
+        <svg class="logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M20 36C20 28.268 26.268 22 34 22C40.627 22 46 27.373 46 34C46 39.523 41.523 44 36 44H28C23.582 44 20 40.418 20 36Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 28C26.667 30.667 29.333 33.333 32 36C34.667 32.667 37.333 29.333 40 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Анна & Михаил</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#story">Наша история</a>
+        <a href="#day">День свадьбы</a>
+        <a href="#details">Детали</a>
+        <a href="#rsvp">Ответ гостя</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Сменить тему">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="reveal is-visible">
+          <span class="eyebrow">Приглашение на свадьбу</span>
+          <h1>Мы женимся и будем счастливы разделить этот день с вами</h1>
+          <p class="hero-lead">Приглашаем вас на наш свадебный день — камерный, тёплый и очень личный. На сайте собраны главные детали: дата, место, программа, дресс-код и форма подтверждения присутствия.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#rsvp">Подтвердить участие</a>
+            <a class="btn btn-secondary" href="#day">Смотреть программу</a>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal is-visible" aria-label="Ключевая информация о свадьбе">
+          <div class="hero-date">
+            <span class="label">Сохраняйте дату</span>
+            <strong>24 · 07</strong>
+            <p>Суббота, 2027</p>
+          </div>
+
+          <div class="meta-list">
+            <div class="meta-item">
+              <small>Церемония</small>
+              <p>17:00 — загородная усадьба «Белый сад»</p>
+            </div>
+            <div class="meta-item">
+              <small>Банкет</small>
+              <p>18:00 — летняя веранда и вечерний ужин</p>
+            </div>
+            <div class="meta-item">
+              <small>Финал вечера</small>
+              <p>22:30 — торт, свечи и танцы до ночи</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container">
+        <div class="section-top reveal">
+          <span class="section-kicker">Наша история</span>
+          <h2>Всё началось с разговора, который затянулся на годы</h2>
+          <p>Этот блок можно легко заменить на вашу настоящую историю знакомства: как встретились, что оказалось важным, почему именно этот день хочется разделить с близкими людьми. Сейчас здесь стоит красивый демонстрационный текст, чтобы вы увидели структуру и настроение сайта.</p>
+        </div>
+
+        <div class="story-grid">
+          <article class="card story-main reveal">
+            <span class="section-kicker">О нас</span>
+            <p>Мы хотим, чтобы свадьба была не просто событием, а встречей людей, которые действительно важны. Поэтому этот сайт сделан как личное приглашение: без лишнего шума, но с вниманием к деталям, атмосфере и удобству гостей.</p>
+            <div class="accent-line"></div>
+            <p>Здесь можно кратко рассказать, почему выбрано именно это место, какой будет характер праздника, хотите ли вы сделать акцент на церемонии, семейном ужине, живой музыке или танцах. Такой текст сразу задаёт правильное ожидание и помогает гостям почувствовать стиль будущего дня.</p>
+            <div class="stats">
+              <div class="stat">
+                <strong>1</strong>
+                <span>день, который хочется запомнить</span>
+              </div>
+              <div class="stat">
+                <strong>3</strong>
+                <span>главные части праздника: встреча, церемония, вечер</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>тепла, личных деталей и живого общения</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card story-side reveal">
+            <span class="section-kicker">Формат</span>
+            <p>Такой сайт хорошо работает как цифровая визитка-приглашение: его удобно открыть с телефона, переслать родственникам и дополнить точной информацией ближе к дате.</p>
+            <div class="accent-line"></div>
+            <p>Можно добавить карту, таймер обратного отсчёта, список пожеланий по подаркам, фото пары, музыкальный плейлист и даже закрытый раздел с логистикой для гостей из другого города.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="day">
+      <div class="container">
+        <div class="section-top reveal">
+          <span class="section-kicker">День свадьбы</span>
+          <h2>Программа, чтобы гостям было спокойно и понятно</h2>
+          <p>Для свадебного сайта особенно полезен короткий, визуально чистый таймлайн. Он снимает лишние вопросы: когда приезжать, сколько длится церемония, когда начнётся ужин и во сколько планировать обратную дорогу.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <time datetime="2027-07-24T16:30">16:30</time>
+            <div>
+              <h3>Сбор гостей</h3>
+              <p>Лёгкий welcome, музыка, напитки и время обняться до начала официальной части.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time datetime="2027-07-24T17:00">17:00</time>
+            <div>
+              <h3>Церемония</h3>
+              <p>Основной момент дня — коротко, красиво и по-настоящему лично.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time datetime="2027-07-24T18:00">18:00</time>
+            <div>
+              <h3>Ужин и поздравления</h3>
+              <p>Тёплый вечер с близкими, тостами, ужином и живым общением без спешки.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <time datetime="2027-07-24T20:30">20:30</time>
+            <div>
+              <h3>Танцы и вечерняя программа</h3>
+              <p>Музыка, танцы, фотографии на закате и более свободная часть праздника.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="container">
+        <div class="section-top reveal">
+          <span class="section-kicker">Детали</span>
+          <h2>Всё, что обычно спрашивают гости</h2>
+          <p>Этот блок полезно сделать максимально прикладным. Чем точнее будет информация, тем меньше организационной нагрузки в последние недели перед свадьбой.</p>
+        </div>
+
+        <div class="details-grid">
+          <article class="card detail-wide reveal">
+            <span class="section-kicker">Локация и логистика</span>
+            <p>Здесь можно разместить полный адрес площадки, схему проезда, координаты для навигатора и подсказку по парковке. Если часть гостей приедет из другого города, стоит добавить ближайшие отели, трансфер или время общего выезда.</p>
+            <div class="accent-line"></div>
+            <p>При желании сюда можно встроить карту, блок с контактами координатора или отдельный абзац о том, кому звонить в день свадьбы по организационным вопросам.</p>
+          </article>
+
+          <aside class="dress-card detail-narrow reveal">
+            <span class="section-kicker">Дресс-код</span>
+            <p>Самый удобный вариант — короткое описание атмосферы и палитры, без жёсткого давления на гостей. Например: «просим выбрать спокойные природные оттенки и избегать чисто белого».</p>
+            <div class="palette" aria-label="Пример палитры дресс-кода">
+              <span class="swatch" style="background:#d8c2b0"></span>
+              <span class="swatch" style="background:#b88f7a"></span>
+              <span class="swatch" style="background:#8c5a4b"></span>
+              <span class="swatch" style="background:#6a7b67"></span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="notes-grid" style="margin-top: var(--space-6);">
+          <article class="note-card reveal">
+            <span class="section-kicker">Дети</span>
+            <p>Можно деликатно указать формат вечера: только для взрослых или семейное мероприятие.</p>
+          </article>
+          <article class="note-card reveal">
+            <span class="section-kicker">Подарки</span>
+            <p>Удобно заранее написать, что для вас действительно уместно: впечатления, вклад в путешествие или просто ваше присутствие.</p>
+          </article>
+          <article class="note-card reveal">
+            <span class="section-kicker">Цветы</span>
+            <p>Здесь можно оставить альтернативу букетам: книга с пожеланием, благотворительное пожертвование или бутылка вина для семейной коллекции.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="container rsvp-layout">
+        <div class="rsvp-card reveal">
+          <span class="section-kicker">Ответ гостя</span>
+          <h2>Подтвердите участие до 1 июня</h2>
+          <p>Сейчас форма работает как визуальный макет. На следующем шаге можно подключить отправку в Telegram, Google Sheets, почту, Formspree, Supabase или любой другой удобный вам способ сбора ответов.</p>
+
+          <form>
+            <div class="field">
+              <label for="name">Ваше имя и фамилия</label>
+              <input id="name" name="name" type="text" placeholder="Например, Елена Иванова" />
+            </div>
+            <div class="field">
+              <label for="attendance">Сможете ли вы присутствовать?</label>
+              <select id="attendance" name="attendance">
+                <option>Да, с радостью буду</option>
+                <option>Пока не уверен(а)</option>
+                <option>К сожалению, не смогу</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="comment">Комментарий</label>
+              <textarea id="comment" name="comment" placeholder="Например, сообщите о пищевых ограничениях или вопросах по трансферу"></textarea>
+            </div>
+            <button class="btn btn-primary" type="button">Отправить ответ</button>
+          </form>
+        </div>
+
+        <aside class="dress-card reveal">
+          <span class="section-kicker">Что можно добавить дальше</span>
+          <p>После утверждения визуального стиля имеет смысл перейти от макета к реальному свадебному сайту с вашими данными.</p>
+          <div class="accent-line"></div>
+          <p>Наиболее полезные доработки:</p>
+          <ul style="margin-top: var(--space-4); display: grid; gap: var(--space-3); color: var(--color-text-muted); padding-left: 1.2rem;">
+            <li>Подстановка ваших имён, даты, адреса и тайминга.</li>
+            <li>Фото пары в hero-блоке и в секции истории.</li>
+            <li>Настоящая форма RSVP с записью ответов.</li>
+            <li>Таймер обратного отсчёта до свадьбы.</li>
+            <li>Карта площадки и контакты координатора.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Сделано как персональное цифровое приглашение — красиво, спокойно и удобно для гостей.</p>
+      <a href="#hero">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      function icon(mode) {
+        return mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+
+      if (toggle) {
+        toggle.innerHTML = icon(theme);
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          toggle.setAttribute('aria-label', theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на тёмную тему');
+          toggle.innerHTML = icon(theme);
+        });
+      }
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(function(el, index) {
+        if (index > 1) observer.observe(el);
+      });
+    }());
+  </script>
+</body>
+</html>
