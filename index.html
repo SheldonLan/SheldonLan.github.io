@@ -120,6 +120,7 @@
       margin-inline: auto;
     }
 
+    /* ── Header ── */
     .header {
       position: sticky;
       top: 0;
@@ -128,7 +129,6 @@
       background: color-mix(in srgb, var(--color-bg) 86%, transparent);
       border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
     }
-
     .header-inner {
       min-height: 76px;
       display: flex;
@@ -136,7 +136,6 @@
       justify-content: space-between;
       gap: var(--space-4);
     }
-
     .brand {
       display: inline-flex;
       align-items: center;
@@ -145,13 +144,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
-    .logo {
-      width: 44px;
-      height: 44px;
-      color: var(--color-primary);
-    }
-
+    .logo { width: 44px; height: 44px; color: var(--color-primary); }
     .nav {
       display: flex;
       align-items: center;
@@ -159,18 +152,11 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
-    .nav a {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
+    .nav a { font-size: var(--text-sm); color: var(--color-text-muted); }
     .theme-toggle {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: var(--radius-full);
-      display: inline-grid;
-      place-items: center;
+      display: inline-grid; place-items: center;
       background: var(--color-surface);
       border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
       box-shadow: var(--shadow-sm);
@@ -178,15 +164,14 @@
 
     main { overflow: clip; }
 
-    .hero {
-      padding-block: clamp(var(--space-16), 13vw, var(--space-32));
-    }
+    /* ── Hero ── */
+    .hero { padding-block: clamp(var(--space-16), 13vw, var(--space-32)); }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: var(--space-8);
-      align-items: end;
+      align-items: start;
     }
 
     .eyebrow {
@@ -212,7 +197,6 @@
       max-width: 58ch;
       color: var(--color-text-muted);
     }
-
     .hero-actions {
       display: flex;
       gap: var(--space-4);
@@ -231,18 +215,120 @@
       font-size: var(--text-sm);
       transition: transform var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive);
     }
-
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--color-primary);
-      color: var(--color-text-inverse);
-      box-shadow: var(--shadow-md);
-    }
+    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); box-shadow: var(--shadow-md); }
     .btn-primary:hover { background: var(--color-primary-hover); }
     .btn-secondary {
       background: var(--color-surface);
       border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
       color: var(--color-text);
+    }
+
+    /* ── Hero photo column ── */
+    .hero-photo-col {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 3 / 4;
+      background: var(--color-surface-2);
+    }
+
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* placeholder shown when img/general.jpg not yet uploaded */
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+      text-align: center;
+      padding: var(--space-8);
+    }
+    .hero-photo-placeholder svg { opacity: 0.35; }
+
+    /* date card below photo */
+    .hero-card {
+      padding: var(--space-6) var(--space-8);
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-6);
+      align-items: center;
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+      border-radius: calc(var(--radius-xl) - 12px);
+      pointer-events: none;
+    }
+
+    .hero-date {
+      display: grid;
+      gap: var(--space-1);
+      text-align: center;
+    }
+    .hero-date strong {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+      font-weight: 500;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .meta-list { display: grid; gap: var(--space-3); }
+    .meta-item small,
+    .section-kicker,
+    .timeline-item time,
+    .label {
+      display: block;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-2);
+    }
+
+    section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
+
+    .section-top {
+      display: grid;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      max-width: 62ch;
+    }
+    .section-top p { color: var(--color-text-muted); }
+
+    .story-grid,
+    .details-grid,
+    .notes-grid {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: repeat(12, 1fr);
     }
 
     .hero-card,
@@ -257,96 +343,14 @@
       box-shadow: var(--shadow-md);
     }
 
-    .hero-card {
-      padding: var(--space-8);
-      position: relative;
-      isolation: isolate;
-      min-height: 520px;
-      display: grid;
-      align-content: space-between;
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 74%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent)),
-        var(--color-surface);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
-      border-radius: calc(var(--radius-xl) - 18px);
-      pointer-events: none;
-    }
-
-    .hero-date {
-      display: grid;
-      gap: var(--space-2);
-      text-align: center;
-      align-self: center;
-    }
-
-    .hero-date strong {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 2rem + 3vw, 5rem);
-      font-weight: 500;
-      color: var(--color-primary);
-    }
-
-    .meta-list {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .meta-item small,
-    .section-kicker,
-    .timeline-item time,
-    .label {
-      display: block;
-      color: var(--color-text-faint);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: var(--space-2);
-    }
-
-    section {
-      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
-    }
-
-    .section-top {
-      display: grid;
-      gap: var(--space-4);
-      margin-bottom: var(--space-8);
-      max-width: 62ch;
-    }
-
-    .section-top p { color: var(--color-text-muted); }
-
-    .story-grid,
-    .details-grid,
-    .notes-grid {
-      display: grid;
-      gap: var(--space-6);
-      grid-template-columns: repeat(12, 1fr);
-    }
-
-    .card {
-      padding: var(--space-8);
-      min-height: 100%;
-    }
-
+    .card { padding: var(--space-8); min-height: 100%; }
     .story-main { grid-column: span 7; }
-    .story-side { grid-column: span 5; }
-    .detail-wide { grid-column: span 7; }
+    .story-side  { grid-column: span 5; }
+    .detail-wide   { grid-column: span 7; }
     .detail-narrow { grid-column: span 5; }
     .note-card { grid-column: span 4; padding: var(--space-6); }
 
-    .accent-line {
-      width: 72px;
-      height: 1px;
-      background: var(--color-primary);
-      margin-block: var(--space-5);
-    }
+    .accent-line { width: 72px; height: 1px; background: var(--color-primary); margin-block: var(--space-5); }
 
     .stats {
       display: grid;
@@ -354,13 +358,7 @@
       gap: var(--space-4);
       margin-top: var(--space-8);
     }
-
-    .stat {
-      padding: var(--space-5);
-      background: var(--color-surface-2);
-      border-radius: var(--radius-lg);
-    }
-
+    .stat { padding: var(--space-5); background: var(--color-surface-2); border-radius: var(--radius-lg); }
     .stat strong {
       display: block;
       font-family: var(--font-display);
@@ -371,11 +369,63 @@
       margin-bottom: var(--space-2);
     }
 
-    .timeline {
+    /* ── Gallery ── */
+    .gallery-grid {
       display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--space-5);
     }
 
+    .gallery-item {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .gallery-photo {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: var(--color-surface-2);
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-photo:hover img { transform: scale(1.04); }
+
+    /* placeholder when photo not yet uploaded */
+    .gallery-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      text-align: center;
+      padding: var(--space-4);
+    }
+    .gallery-photo-placeholder svg { opacity: 0.3; }
+
+    .gallery-caption {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      text-align: center;
+      padding-inline: var(--space-2);
+    }
+
+    /* ── Timeline ── */
+    .timeline { display: grid; gap: var(--space-5); }
     .timeline-item {
       padding: var(--space-6);
       display: grid;
@@ -383,23 +433,15 @@
       gap: var(--space-6);
       align-items: start;
     }
-
     .timeline-item p,
     .card p,
     .note-card p,
     .rsvp-card p,
     .dress-card p { color: var(--color-text-muted); }
 
-    .palette {
-      display: flex;
-      gap: var(--space-3);
-      flex-wrap: wrap;
-      margin-top: var(--space-5);
-    }
-
+    .palette { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-5); }
     .swatch {
-      width: 64px;
-      height: 64px;
+      width: 64px; height: 64px;
       border-radius: var(--radius-full);
       border: 4px solid color-mix(in srgb, var(--color-surface) 80%, transparent);
       box-shadow: var(--shadow-sm);
@@ -411,11 +453,7 @@
       gap: var(--space-6);
       align-items: start;
     }
-
-    .rsvp-card,
-    .dress-card {
-      padding: var(--space-8);
-    }
+    .rsvp-card, .dress-card { padding: var(--space-8); }
 
     .rsvp-iframe-wrap {
       margin-top: var(--space-6);
@@ -423,32 +461,22 @@
       overflow: hidden;
       border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
     }
+    .rsvp-iframe-wrap iframe { display: block; width: 100%; border: none; }
 
-    .rsvp-iframe-wrap iframe {
-      display: block;
-      width: 100%;
-      border: none;
-    }
-
-    /* Countdown */
-    .countdown-wrap {
-      margin-top: var(--space-8);
-    }
-
+    /* ── Countdown ── */
+    .countdown-wrap { margin-top: var(--space-8); }
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: var(--space-4);
       margin-top: var(--space-4);
     }
-
     .countdown-unit {
       background: var(--color-surface-2);
       border-radius: var(--radius-lg);
       padding: var(--space-5) var(--space-4);
       text-align: center;
     }
-
     .countdown-unit strong {
       display: block;
       font-family: var(--font-display);
@@ -458,7 +486,6 @@
       line-height: 1;
       margin-bottom: var(--space-2);
     }
-
     .countdown-unit span {
       font-size: var(--text-xs);
       color: var(--color-text-faint);
@@ -466,33 +493,8 @@
       letter-spacing: 0.1em;
     }
 
-    form {
-      display: grid;
-      gap: var(--space-5);
-      margin-top: var(--space-6);
-    }
-
-    .field {
-      display: grid;
-      gap: var(--space-2);
-    }
-
-    input, textarea, select {
-      width: 100%;
-      min-height: 48px;
-      padding: var(--space-4) var(--space-4);
-      border-radius: var(--radius-md);
-      border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
-      background: var(--color-surface-2);
-    }
-
-    textarea { min-height: 132px; resize: vertical; }
-
-    .footer {
-      padding-block: var(--space-10) var(--space-16);
-      color: var(--color-text-muted);
-    }
-
+    /* ── Footer ── */
+    .footer { padding-block: var(--space-10) var(--space-16); color: var(--color-text-muted); }
     .footer-inner {
       padding-top: var(--space-6);
       border-top: 1px solid var(--color-divider);
@@ -503,32 +505,23 @@
       align-items: center;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ── Reveal animation ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+    /* ── Responsive ── */
     @media (max-width: 980px) {
       .hero-grid,
       .rsvp-layout,
       .timeline-item,
       .story-grid,
       .details-grid,
-      .notes-grid {
-        grid-template-columns: 1fr;
-      }
-      .story-main,
-      .story-side,
-      .detail-wide,
-      .detail-narrow,
-      .note-card { grid-column: auto; }
-      .hero-card { min-height: auto; }
+      .notes-grid { grid-template-columns: 1fr; }
+      .story-main, .story-side, .detail-wide, .detail-narrow, .note-card { grid-column: auto; }
       .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-card { grid-template-columns: 1fr; text-align: center; }
+      .meta-list { display: none; } /* скрываем meta на мобайле — дублируется в таймлайне */
     }
 
     @media (max-width: 720px) {
@@ -541,6 +534,7 @@
       .timeline-item { gap: var(--space-3); }
       .footer-inner { flex-direction: column; align-items: flex-start; }
       .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -551,6 +545,7 @@
         scroll-behavior: auto !important;
       }
       .reveal { opacity: 1; transform: none; }
+      .gallery-photo:hover img { transform: none; }
     }
   </style>
 </head>
@@ -570,6 +565,7 @@
 
       <nav class="nav" aria-label="Основная навигация">
         <a href="#story">Наша история</a>
+        <a href="#gallery">Фотографии</a>
         <a href="#day">День свадьбы</a>
         <a href="#details">Детали</a>
         <a href="#rsvp">Ответ гостя</a>
@@ -583,6 +579,8 @@
   <main id="content">
     <section class="hero" id="hero">
       <div class="container hero-grid">
+
+        <!-- левая колонка: текст + таймер -->
         <div class="reveal is-visible">
           <span class="eyebrow">Приглашение на свадьбу</span>
           <h1>Мы женимся и будем счастливы разделить этот день с вами</h1>
@@ -603,31 +601,57 @@
           </div>
         </div>
 
-        <aside class="hero-card reveal is-visible" aria-label="Ключевая информация о свадьбе">
-          <div class="hero-date">
-            <span class="label">Сохраняйте дату</span>
-            <strong>07 · 07</strong>
-            <p>Суббота, 2027 <em style="font-size:var(--text-xs); color:var(--color-text-faint);">(ориентировочно)</em></p>
+        <!-- правая колонка: фото пары + карточка с датой -->
+        <div class="hero-photo-col reveal is-visible">
+          <div class="hero-photo-wrap">
+            <img
+              src="img/general.jpg"
+              alt="Анатолий и Марго"
+              loading="eager"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <!-- заглушка, пока фото не загружено -->
+            <div class="hero-photo-placeholder" style="display:none;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+              <span>img/general.jpg<br/>— фото пары —</span>
+            </div>
           </div>
 
-          <div class="meta-list">
-            <div class="meta-item">
-              <small>Церемония</small>
-              <p>Время и место будут уточнены ближе к дате</p>
+          <!-- карточка с датой под фото -->
+          <aside class="hero-card" aria-label="Ключевая информация о свадьбе">
+            <div class="hero-date">
+              <span class="label">Сохраняйте дату</span>
+              <strong>07 · 07</strong>
+              <p style="font-size:var(--text-sm); color:var(--color-text-muted);">
+                Суббота, 2027
+                <em style="font-size:var(--text-xs); color:var(--color-text-faint);">(ориентировочно)</em>
+              </p>
             </div>
-            <div class="meta-item">
-              <small>Банкет</small>
-              <p>Детали по локации появятся позднее</p>
+            <div class="meta-list">
+              <div class="meta-item">
+                <small>Церемония</small>
+                <p>Время и место будут уточнены ближе к дате</p>
+              </div>
+              <div class="meta-item">
+                <small>Банкет</small>
+                <p>Детали по локации появятся позднее</p>
+              </div>
+              <div class="meta-item">
+                <small>Финал вечера</small>
+                <p>Торт, свечи и танцы — обязательно будут</p>
+              </div>
             </div>
-            <div class="meta-item">
-              <small>Финал вечера</small>
-              <p>Торт, свечи и танцы — обязательно будут</p>
-            </div>
-          </div>
-        </aside>
+          </aside>
+        </div>
+
       </div>
     </section>
 
+    <!-- ── История ── -->
     <section id="story">
       <div class="container">
         <div class="section-top reveal">
@@ -643,18 +667,9 @@
             <div class="accent-line"></div>
             <p>Праздник будет тёплым и камерным. Нам важна живая атмосфера, искренние разговоры и общие воспоминания — именно такой день мы хотим провести вместе с вами.</p>
             <div class="stats">
-              <div class="stat">
-                <strong>1</strong>
-                <span>день, который хочется запомнить</span>
-              </div>
-              <div class="stat">
-                <strong>3</strong>
-                <span>главные части праздника: встреча, церемония, вечер</span>
-              </div>
-              <div class="stat">
-                <strong>100%</strong>
-                <span>тепла, личных деталей и живого общения</span>
-              </div>
+              <div class="stat"><strong>1</strong><span>день, который хочется запомнить</span></div>
+              <div class="stat"><strong>3</strong><span>главные части праздника: встреча, церемония, вечер</span></div>
+              <div class="stat"><strong>100%</strong><span>тепла, личных деталей и живого общения</span></div>
             </div>
           </article>
 
@@ -668,6 +683,102 @@
       </div>
     </section>
 
+    <!-- ── Галерея ── -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-top reveal">
+          <span class="section-kicker">Фотографии</span>
+          <h2>Моменты, которые хочется сохранить</h2>
+          <p>Несколько кадров из нашей жизни — чтобы вы могли почувствовать атмосферу и настроение, которое мы хотим создать на свадьбе.</p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-photo">
+              <img
+                src="img/photo-1.jpg"
+                alt="Фотография 1"
+                loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="gallery-photo-placeholder" style="display:none;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>img/photo-1.jpg</span>
+              </div>
+            </div>
+            <figcaption class="gallery-caption">Подпись к фотографии 1</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-photo">
+              <img
+                src="img/photo-2.jpg"
+                alt="Фотография 2"
+                loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="gallery-photo-placeholder" style="display:none;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>img/photo-2.jpg</span>
+              </div>
+            </div>
+            <figcaption class="gallery-caption">Подпись к фотографии 2</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-photo">
+              <img
+                src="img/photo-3.jpg"
+                alt="Фотография 3"
+                loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="gallery-photo-placeholder" style="display:none;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>img/photo-3.jpg</span>
+              </div>
+            </div>
+            <figcaption class="gallery-caption">Подпись к фотографии 3</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-photo">
+              <img
+                src="img/photo-4.jpg"
+                alt="Фотография 4"
+                loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="gallery-photo-placeholder" style="display:none;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+                <span>img/photo-4.jpg</span>
+              </div>
+            </div>
+            <figcaption class="gallery-caption">Подпись к фотографии 4</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── День свадьбы ── -->
     <section id="day">
       <div class="container">
         <div class="section-top reveal">
@@ -709,6 +820,7 @@
       </div>
     </section>
 
+    <!-- ── Детали ── -->
     <section id="details">
       <div class="container">
         <div class="section-top reveal">
@@ -730,7 +842,6 @@
             <p>Дресс-код свободный, строгих правил нет. При желании — отдайте предпочтение <strong>официально-деловому стилю</strong>: это создаст красивую общую атмосферу на фото и на вечере.</p>
             <p style="margin-top: var(--space-4);">Приветствуются нейтральные и приглушённые оттенки — примеры в палитре ниже. Просим воздержаться от чисто белого цвета.</p>
             <div class="palette" aria-label="Рекомендуемая палитра дресс-кода">
-              <!-- Нейтральные деловые оттенки: светло-бежевый, серо-голубой, антрацит, тёмно-синий -->
               <span class="swatch" style="background:#e8e0d5" title="Светлый беж"></span>
               <span class="swatch" style="background:#9eaab8" title="Серо-голубой"></span>
               <span class="swatch" style="background:#4a4a4a" title="Антрацит"></span>
@@ -756,6 +867,7 @@
       </div>
     </section>
 
+    <!-- ── RSVP ── -->
     <section id="rsvp">
       <div class="container rsvp-layout">
         <div class="rsvp-card reveal">
@@ -825,41 +937,30 @@
 
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.1 });
 
       document.querySelectorAll('.reveal').forEach(function(el, index) {
         if (index > 1) observer.observe(el);
       });
 
-      // Countdown timer to 07.07.2027 00:00:00 (Novosibirsk, UTC+7)
+      // Countdown to 07.07.2027 00:00:00 Novosibirsk (UTC+7)
       var target = new Date('2027-07-07T00:00:00+07:00');
-
       function pad(n) { return String(n).padStart(2, '0'); }
-
       function tick() {
-        var now = new Date();
-        var diff = target - now;
+        var diff = target - new Date();
         if (diff <= 0) {
-          document.getElementById('cd-days').textContent = '0';
-          document.getElementById('cd-hours').textContent = '00';
-          document.getElementById('cd-minutes').textContent = '00';
-          document.getElementById('cd-seconds').textContent = '00';
+          ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(function(id, i) {
+            document.getElementById(id).textContent = i === 0 ? '0' : '00';
+          });
           return;
         }
-        var days    = Math.floor(diff / 86400000);
-        var hours   = Math.floor((diff % 86400000) / 3600000);
-        var minutes = Math.floor((diff % 3600000) / 60000);
-        var seconds = Math.floor((diff % 60000) / 1000);
-        document.getElementById('cd-days').textContent    = days;
-        document.getElementById('cd-hours').textContent   = pad(hours);
-        document.getElementById('cd-minutes').textContent = pad(minutes);
-        document.getElementById('cd-seconds').textContent = pad(seconds);
+        document.getElementById('cd-days').textContent    = Math.floor(diff / 86400000);
+        document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+        document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+        document.getElementById('cd-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
       }
-
       tick();
       setInterval(tick, 1000);
     }());
