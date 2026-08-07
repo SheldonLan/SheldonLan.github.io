@@ -613,6 +613,9 @@
       tick(); setInterval(tick, 1000);
 
       // ── RSVP Form ──
+      // NOTE: Content-Type must be text/plain;charset=utf-8 to avoid CORS preflight.
+      // Apps Script does not support OPTIONS requests, so application/json would block the request.
+      // Parse with JSON.parse(e.postData.contents) on the Apps Script side.
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0BBP3AgoLloF1k9abmWFn2P8RR27Mx91Sr_fe0OCLeQY5qq4JA8UyCAeff0b_Gk12qA/exec';
       var form   = document.getElementById('rsvpForm');
       var btn    = document.getElementById('rsvpSubmit');
@@ -654,7 +657,7 @@
         fetch(SCRIPT_URL, {
           method: 'POST',
           mode:   'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: payload
         })
         .then(function() {
