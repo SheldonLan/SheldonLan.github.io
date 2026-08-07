@@ -528,10 +528,10 @@
             <fieldset class="form-field" style="border:none;padding:0;">
               <legend style="font-size:var(--text-sm);font-weight:500;color:var(--color-text);margin-bottom:var(--space-2);">Будет ли плюс?</legend>
               <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="plus" value="Нет" /><span>Нет, приду один(а)</span></label>
-                <label class="radio-option"><input type="radio" name="plus" value="+1" /><span>+1</span></label>
-                <label class="radio-option"><input type="radio" name="plus" value="+2 (пара с ребёнком)" /><span>+2 — пара с ребёнком</span></label>
-                <label class="radio-option"><input type="radio" name="plus" value="+3 (пара с детьми)" /><span>+3 — пара с двумя детьми</span></label>
+                <label class="radio-option"><input type="radio" name="plus" value="1" /><span>Нет, приду один(а)</span></label>
+                <label class="radio-option"><input type="radio" name="plus" value="2" /><span>+1 (нас будет двое)</span></label>
+                <label class="radio-option"><input type="radio" name="plus" value="3" /><span>+2 — пара с ребёнком</span></label>
+                <label class="radio-option"><input type="radio" name="plus" value="4" /><span>+3 — пара с двумя детьми</span></label>
               </div>
             </fieldset>
 
@@ -633,17 +633,21 @@
           return;
         }
 
-        var plusEl   = form.querySelector('input[name="plus"]:checked');
-        var comment  = form.elements['comment'].value.trim();
+        var plusEl  = form.querySelector('input[name="plus"]:checked');
+        var comment = form.elements['comment'].value.trim();
+
+        // Количество гостей: value уже содержит число (1/2/3/4),
+        // если гость не выбрал — считаем как 1 (придёт один)
+        var guestCount = plusEl ? parseInt(plusEl.value, 10) : 1;
 
         btn.disabled = true;
         btn.textContent = 'Отправляем…';
 
         var payload = JSON.stringify({
-          name:    name,
-          attend:  attend.value,
-          plus:    plusEl ? plusEl.value : '',
-          comment: comment
+          name:        name,
+          attend:      attend.value,
+          guestCount:  guestCount,
+          comment:     comment
         });
 
         fetch(SCRIPT_URL, {
