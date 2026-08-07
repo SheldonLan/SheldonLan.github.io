@@ -173,8 +173,7 @@
     .hero-date strong { font-family: var(--font-display); font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem); font-weight: 500; color: var(--color-primary); line-height: 1; }
     .meta-list { display: grid; gap: var(--space-3); }
     .meta-item small, .section-kicker, .timeline-item time, .label {
-      display: block; color: var(--color-text-faint); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-2);
-    }
+      display: block; color: var(--color-text-faint); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-2); }
     section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
     .section-top { display: grid; gap: var(--space-4); margin-bottom: var(--space-8); max-width: 62ch; }
     .section-top p { color: var(--color-text-muted); }
@@ -573,7 +572,6 @@
 
   <script>
     (function () {
-      // ── Theme ──
       const root = document.documentElement;
       const toggle = document.querySelector('[data-theme-toggle]');
       let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -593,13 +591,11 @@
         });
       }
 
-      // ── Reveal ──
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(function(el, i) { if (i > 1) observer.observe(el); });
 
-      // ── Countdown ──
       var target = new Date('2027-07-07T00:00:00+07:00');
       function pad(n) { return String(n).padStart(2, '0'); }
       function tick() {
@@ -612,11 +608,7 @@
       }
       tick(); setInterval(tick, 1000);
 
-      // ── RSVP Form ──
-      // NOTE: Content-Type must be text/plain;charset=utf-8 to avoid CORS preflight.
-      // Apps Script does not support OPTIONS requests, so application/json would block the request.
-      // Parse with JSON.parse(e.postData.contents) on the Apps Script side.
-      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0BBP3AgoLloF1k9abmWFn2P8RR27Mx91Sr_fe0OCLeQY5qq4JA8UyCAeff0b_Gk12qA/exec';
+      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwuk5kZKwcAWgnOvhINVHt9stkVYb_Hl8D8HK7wjaibybm-oSYEd-v8ZKuArHZlGUq0Q/exec';
       var form   = document.getElementById('rsvpForm');
       var btn    = document.getElementById('rsvpSubmit');
       var status = document.getElementById('formStatus');
