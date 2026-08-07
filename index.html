@@ -608,7 +608,7 @@
       }
       tick(); setInterval(tick, 1000);
 
-      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwuk5kZKwcAWgnOvhINVHt9stkVYb_Hl8D8HK7wjaibybm-oSYEd-v8ZKuArHZlGUq0Q/exec';
+      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKCma464L28ylHzi7qZxAoZDmgZmix0FuUydCk2PoxE4QHVVMtj6-hT20tI5ad5jUTNg/exec';
       var form   = document.getElementById('rsvpForm');
       var btn    = document.getElementById('rsvpSubmit');
       var status = document.getElementById('formStatus');
@@ -636,18 +636,17 @@
         var plusEl  = form.querySelector('input[name="plus"]:checked');
         var comment = form.elements['comment'].value.trim();
 
-        // Количество гостей: value уже содержит число (1/2/3/4),
-        // если гость не выбрал — считаем как 1 (придёт один)
+        // value уже содержит число (1/2/3/4); если не выбрано — 1
         var guestCount = plusEl ? parseInt(plusEl.value, 10) : 1;
 
         btn.disabled = true;
         btn.textContent = 'Отправляем…';
 
         var payload = JSON.stringify({
-          name:        name,
-          attend:      attend.value,
-          guestCount:  guestCount,
-          comment:     comment
+          name:       name,
+          attend:     attend.value,
+          guestCount: guestCount,
+          comment:    comment
         });
 
         fetch(SCRIPT_URL, {
